@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>REGISTRATION FORM</title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+	 <!-- load bootstrap via CDN -->
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <!-- load jquery via CDN -->
+   <link rel="stylesheet" href="css/style3.css">
+   <script type="text/javascript" src="validate.js"></script> 
+</head>
+<body>
+	<div id="mainform">
+		<div class="innerdiv">
+	
+			<h2>REGISTRATION FORM</h2>
+			<form id="form" name="frmCadastre"  action="validate.php" method="POST" >
+		
+			<h3>FILL IN DETAILS!</h3>
+	<p>Name:* &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" onblur="checkbox1()" id="field1" placeholder="keerthi" name="name"/><span id="error1"></span></p><br>
+	<p>Email:*        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text"  id="field2" onblur="checkbox2()" placeholder="keerthi@gmail.com" name="email"/><span id="error2"></span></p><br>
+	<p>Password:*    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp   <input type="password" id="field3" onblur="checkbox3()" placeholder="Keerthi005" name="password"/><span id="error3"></span></p><br>
+	<p>ConfirmPassword:*&nbsp&nbsp&nbsp<input type="password" id="field4" onblur="checkbox4()"  placeholder="password" name="confirmpassword"/><span id="error4"></span></p><br>
+	
+	<div>
+	<p><input type="checkbox" id="accept" name="accept" value="terms"><label for ="terms">I acccept the <a herf="#">TERMS AND CONDITIONS</a></label> </p>
+	</div>
+	<div class="footer">
+
+	<p><input type="submit" id="field6" onclick="myfunction()" value="submit" name="submit"/></p><br>
+	<p><input type="reset" id="field7"   value="reset" name="reset"/></p></div>
+	<table id="tblist">
+	</table>
+	</form>
+	<div id="clear"></div>
+</div>
+<div id="clear"></div>
+</div>
+
+
+<script>
+<script>
+if(file_exists('data.json'))  
+           {  
+                $current_data = file_get_contents('data.json');  
+                $array_data = json_decode($current_data, true);  
+                $extra = array(  
+                     'name'               =>     $_POST['name'],  
+                     'email'          =>     $_POST["uname"],  
+                     'password'     =>     $_POST["password"],
+                     'confirmpassword'       =>      $_POST['email']
+                );  
+                $array_data[] = $extra;  
+                $final_data = json_encode($array_data);  
+                if(file_put_contents('data.json', $final_data))  
+                {  
+                     //$message = "<label class='text-success'>File Appended Success fully</p>"; 
+                     echo " ,data entered into json file and DB"; 
+                }  
+           }  
+           else  
+           {  
+                $error = 'JSON File not exits';  
+           }  
+	
+
+          
+
+        
+
+</script>
+</body>
+</html>
